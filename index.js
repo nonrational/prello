@@ -8,7 +8,7 @@ var
 
 var pr=undefined;
 
-var owner = 'nonrational', repo = 'prello', number = 1;
+var owner = 'nonrational', repo = 'prello', number = 2;
 var pr_url=util.format("https://api.github.com/repos/%s/%s/pulls/%s", owner, repo, number);
 rest.get(pr_url)
   .on('complete', function(r){
