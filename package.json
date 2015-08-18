@@ -1,0 +1,25 @@
+{
+  "name": "prello",
+  "version": "0.0.0",
+  "description": "github.pr->trello.card",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nonrational/prello.git"
+  },
+  "author": "Alan Norton <me@alannorton.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nonrational/prello/issues"
+  },
+  "homepage": "https://github.com/nonrational/prello",
+  "dependencies": {
+    "jasmine": "^2.3.2",
+    "restler": "^3.3.0",
+    "node-trello": "^1.1.2",
+    "nconf": "^0.7.2"
+  }
+}
