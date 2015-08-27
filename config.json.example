@@ -1,4 +1,4 @@
 {
-  "trello_key": "",
-  "trello_secret": ""
+  "TRELLO_KEY": "<< find me at https://trello.com/app-key >>",
+  "TRELLO_SECRET": "<< find me at https://trello.com/1/authorize?key=${TRELLO_KEY}&name=prello_development&expiration=never&response_type=token&scope=read,write >>"
 }

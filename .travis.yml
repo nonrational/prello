@@ -9,3 +9,8 @@ addons:
     acl: public_read
     paths:
       - "prello.tgz"
+
+# need to set these in the travis project config
+# export ARTIFACTS_KEY=
+# export ARTIFACTS_SECRET=
+# export ARTIFACTS_BUCKET=
