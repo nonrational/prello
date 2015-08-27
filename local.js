@@ -1,12 +1,18 @@
 'use strict';
 
-var index = require('./index.js');
+var index = require('./index.js'),
+    fs = require('fs');
 
-index.handler({
-  "owner": "nonrational",
-  "repo": "prello",
-  "number": 2,
-  "message": "[prello @ " + new Date() + "]\n\n_hello again_ from %s"
-}, {
-    succeed: function(s){ }
+fs.readFile('./spec/fixtures/add_pr_comment.json', 'utf8', function(e,data){
+// fs.readFile('./spec/fixtures/reopen_pr.json', 'utf8', function(e,data){
+    index.handler(data, {
+        succeed: function(s){
+            console.error(s);
+            process.exit(0);
+        },
+        fail: function(s){
+            console.error(s);
+            process.exit(1);
+        }
+    });
 });

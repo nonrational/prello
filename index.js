@@ -11,20 +11,24 @@ function extract_card_id(text){
 
 exports.handler = function(event, context) {
 
-    var options = {
-        url: util.format("https://api.github.com/repos/%s/%s/pulls/%s", event.owner, event.repo, event.number),
-        headers: {
-          'User-Agent': 'request (https://github.com/nonrational/prello)'
-        }
-    };
+    var ghpr = JSON.parse(event);
 
-    request(options, function(error, response, body){
-        var pr = JSON.parse(body);
-        var card = new lib.TrelloCard(extract_card_id(pr.body));
+    if(!ghpr.pull_request){
+        context.fail({"error":"event is not a 'pull_request'"});
+    }
 
-        card.comment(util.format(event.message, pr.html_url), function(e,d){
+    var pr_url = ghpr.pull_request.html_url,
+        pr_body = ghpr.pull_request.body,
+        message = ":information_desk_person: %s",
+        mentioned_trello_card_id = extract_card_id(pr_body);
+
+    if(mentioned_trello_card_id){
+        var card = new lib.TrelloCard(mentioned_trello_card_id);
+        card.comment(util.format(message, pr_url), function(e,d){
             e&&context.fail(e)
             d&&context.succeed(d);
         })
-    })
+    } else {
+        context.fail({"error":"no trello card found"});
+    }
 };
