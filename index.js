@@ -9,6 +9,8 @@ function extract_card_id(text){
     return card_url ? card_url[2] : undefined;
 }
 
+console.dir = console.log;
+
 exports.handler = function(event, context) {
 
     var options = {
@@ -22,10 +24,9 @@ exports.handler = function(event, context) {
         var pr = JSON.parse(body);
         var card = new lib.TrelloCard(extract_card_id(pr.body));
 
-        console.log("trello_card:");
-        console.dir(card);
-
-        card.comment(util.format(event.message, pr.html_url))
-        context.succeed(card.url);
+        card.comment(util.format(event.message, pr.html_url), function(e,d){
+            e&&context.fail(e)
+            d&&context.succeed(d);
+        })
     })
 };

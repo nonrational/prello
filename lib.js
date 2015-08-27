@@ -12,12 +12,11 @@ function TrelloCard(id){
     this.t = new Trello(nconf.get("TRELLO_KEY"), nconf.get("TRELLO_SECRET"));
 }
 
-TrelloCard.prototype.comment = function(comment_text){
+TrelloCard.prototype.comment = function(comment_text, callback){
     var comment_url = util.format("/1/cards/%s/actions/comments", this.id);
 
     this.t.post(comment_url, { text: comment_text }, function(e,d){
-        e&&console.log(e);
-        d&&console.log(d);
+        callback(e,d);
     });
 }
 
