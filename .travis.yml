@@ -6,5 +6,6 @@ after_success:
 addons:
   artifacts:
     debug: true
+    acl: public_read
     paths:
       - "prello.tgz"
