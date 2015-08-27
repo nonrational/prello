@@ -4,8 +4,7 @@ var Trello = require('node-trello'),
     nconf = require('nconf'),
     util = require('util');
 
-nconf.env()
-     .file({ file: 'config.json'})
+nconf.file({ file: 'config.json'})
 
 function TrelloCard(id){
     this.id = id;
@@ -21,6 +20,7 @@ TrelloCard.prototype.comment = function(comment_text){
 
     this.conn.post(comment_url, { text: comment_text }, function(e,d){
         e&&console.error(e);
+        d&&console.log(d);
     });
 }
 
@@ -28,6 +28,7 @@ TrelloCard.prototype.find_comment = function(comment_text){
     var comment_url = util.format("/1/cards/%s/actions/comments", this.id);
     this.conn.post(comment_url, { text: comment_text }, function(e,d){
         e&&console.error(e);
+        d&&console.log(d);
     });
 }
 
