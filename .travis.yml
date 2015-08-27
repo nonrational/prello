@@ -8,4 +8,3 @@ addons:
     debug: true
     paths:
       - "prello.tgz"
-  s3_region: "us-east-1"
