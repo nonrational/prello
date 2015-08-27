@@ -6,9 +6,7 @@ index.handler({
   "owner": "nonrational",
   "repo": "prello",
   "number": 2,
-  "message": "[prello] says _hello again_ from %s"
+  "message": "[prello @ " + new Date() + "]\n\n_hello again_ from %s"
 }, {
-    succeed: function(s){
-        console.log(s);
-    }
+    succeed: function(s){ }
 });

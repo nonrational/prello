@@ -9,21 +9,13 @@ nconf.file({ file: 'config.json'})
 function TrelloCard(id){
     this.id = id;
     this.url = "https://trello.com/c/" + this.id;
-    this.conn = new Trello(nconf.get("TRELLO_KEY"), nconf.get("TRELLO_SECRET"));
+    this.t = new Trello(nconf.get("TRELLO_KEY"), nconf.get("TRELLO_SECRET"));
 }
 
 TrelloCard.prototype.comment = function(comment_text){
     var comment_url = util.format("/1/cards/%s/actions/comments", this.id);
 
-    this.conn.post(comment_url, { text: comment_text }, function(e,d){
-        e&&console.log(e);
-        d&&console.log(d);
-    });
-}
-
-TrelloCard.prototype.find_comment = function(comment_text){
-    var comment_url = util.format("/1/cards/%s/actions/comments", this.id);
-    this.conn.post(comment_url, { text: comment_text }, function(e,d){
+    this.t.post(comment_url, { text: comment_text }, function(e,d){
         e&&console.log(e);
         d&&console.log(d);
     });

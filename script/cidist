@@ -3,4 +3,8 @@ source env.sh
 npm install
 zip -9 -r --exclude=*.git* --exclude=*.sh prello.zip .
 
-aws s3 cp --acl public-read ./prello.zip s3://${ARTIFACTS_BUCKET}/prello-$(date '+%Y%m%d%H%M%S').zip
+filename="prello-$(date '+%Y%m%d%H%M%S').zip"
+
+aws s3 cp --acl public-read ./prello.zip s3://${ARTIFACTS_BUCKET}/$filename
+
+echo $filename | pbcopy
