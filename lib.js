@@ -15,11 +15,8 @@ function TrelloCard(id){
 TrelloCard.prototype.comment = function(comment_text){
     var comment_url = util.format("/1/cards/%s/actions/comments", this.id);
 
-    console.log("comment_url=", comment_url);
-    console.log(comment_text);
-
     this.conn.post(comment_url, { text: comment_text }, function(e,d){
-        e&&console.error(e);
+        e&&console.log(e);
         d&&console.log(d);
     });
 }
@@ -27,7 +24,7 @@ TrelloCard.prototype.comment = function(comment_text){
 TrelloCard.prototype.find_comment = function(comment_text){
     var comment_url = util.format("/1/cards/%s/actions/comments", this.id);
     this.conn.post(comment_url, { text: comment_text }, function(e,d){
-        e&&console.error(e);
+        e&&console.log(e);
         d&&console.log(d);
     });
 }
