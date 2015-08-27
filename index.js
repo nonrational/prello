@@ -46,6 +46,8 @@ exports.handler = function(event, context) {
         pr = r;
         var card = new TrelloCard(extract_card_id(pr.body));
         card.comment(util.format("[prello] says _hello_ from %s", pr.html_url))
-        console.succeed(card.url);
+        context.succeed(card.url);
     })
+
+
 };

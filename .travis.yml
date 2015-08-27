@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "0.10"
+after_success:
+  - "tar cvzf prello.tgz --exclude '.git' ."
+addons:
+  artifacts:
+    debug: true
+    paths:
+      - "prello.tgz"
+  s3_region: "us-east-1"
