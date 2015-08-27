@@ -18,14 +18,3 @@ exports.handler = function(event, context) {
         context.succeed(card.url);
     })
 };
-
-exports.handler({
-  "owner": "nonrational",
-  "repo": "prello",
-  "number": 2,
-  "message": "[prello] says _hello again_ from %s"
-}, {
-    succeed: function(s){
-        console.log(s);
-    }
-});
