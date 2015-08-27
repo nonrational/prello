@@ -1,7 +1,10 @@
 var rest = require('restler'),
-util = require('util'),
-nconf = require('nconf').env(),
-Trello = require('node-trello');
+    util = require('util'),
+    nconf = require('nconf'),
+    Trello = require('node-trello');
+
+nconf.env()
+     .file({ file: 'config.json'})
 
 // pr_details = {
 //     "owner":  "nonrational",
@@ -31,8 +34,6 @@ exports.handler = function(event, context) {
         repo   = event.repo,
         number = event.number;
 
-    var pr = undefined;
-
     var pr_url=util.format("https://api.github.com/repos/%s/%s/pulls/%s", owner, repo, number);
 
     function extract_card_id(text){
@@ -42,12 +43,16 @@ exports.handler = function(event, context) {
         }
     }
 
-    rest.get(pr_url).on('complete', function(r){
-        pr = r;
-        var card = new TrelloCard(extract_card_id(pr.body));
+    console.log(pr_url);
+
+    rest.get(pr_url).on('complete', function(pr){
+        var card_id = extract_card_id(pr.body);
+        console.log(card_id);
+
+        var card = new TrelloCard(card_id);
+
         card.comment(util.format("[prello] says _hello_ from %s", pr.html_url))
+
         context.succeed(card.url);
     })
-
-
 };

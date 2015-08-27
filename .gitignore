@@ -1,3 +1,6 @@
 /node_modules
 /env.sh
+/auth.sh
+/config.json
 *.tgz
+*.zip
