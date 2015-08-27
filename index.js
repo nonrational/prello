@@ -9,8 +9,6 @@ function extract_card_id(text){
     return card_url ? card_url[2] : undefined;
 }
 
-console.dir = console.log;
-
 exports.handler = function(event, context) {
 
     var options = {
