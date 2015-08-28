@@ -1,10 +1,11 @@
+/*jslint node: true */
 'use strict';
 
 var Trello = require('node-trello'),
     nconf = require('nconf'),
     util = require('util');
 
-nconf.file({ file: 'config.json'})
+nconf.file({ file: 'config.json'});
 
 function TrelloCard(id){
     this.id = id;
@@ -18,7 +19,7 @@ TrelloCard.prototype.comment = function(comment_text, callback){
     this.t.post(comment_url, { text: comment_text }, function(e,d){
         callback(e,d);
     });
-}
+};
 
 exports.TrelloCard = TrelloCard;
 exports.config = nconf;
