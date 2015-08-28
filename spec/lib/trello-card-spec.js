@@ -9,4 +9,15 @@ describe("initializer", function () {
         expect(card.id).toBe("my_id");
     });
 
+    it("can comment and then delete that comment", function(done) {
+
+        var card = new TrelloCard("XinwRYra");
+
+        card.comment_once("test-comment", function(e){
+            expect(e).toBe(null);
+            card.delete_comment_like("test-comment", done);
+        });
+
+    });
+
 });
