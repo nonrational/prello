@@ -3,7 +3,6 @@ node_js:
   - "0.10"
   - "0.12"
 before_install: npm install -g grunt-cli
-before_script: grunt
 
 # TODO: disabling until can use travis env to hold secrets
 # after_success: ./script/cidist
