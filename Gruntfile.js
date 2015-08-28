@@ -10,20 +10,30 @@ module.exports = function(grunt) {
                 "Gruntfile.js", "*.js", "lib/**/*.js", "spec/**/*.js"
             ]
         },
-        jasmine_node: {
+        jasmine_nodejs: {
             options: {
-                forceExit: true,
-                match: '.',
-                matchall: false,
-                extensions: 'js',
-                specNameMatcher: 'spec'
+                specNameSuffix: "spec.js",
+                stopOnFailure: false,
+                reporters: {
+                    console: {
+                        colors: true,
+                        cleanStack: false,
+                        verbosity: 4,
+                        listStyle: "indent",
+                        activity: false
+                    }
+                },
             },
-            all: ['spec/']
+            unit: {
+                specs: [
+                    "spec/lib/**",
+                ]
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-jasmine-node');
+    grunt.loadNpmTasks('grunt-jasmine-nodejs');
 
-    grunt.registerTask('default', ['jshint', 'jasmine_node']);
+    grunt.registerTask('default', ['jshint', 'jasmine_nodejs:unit']);
 };

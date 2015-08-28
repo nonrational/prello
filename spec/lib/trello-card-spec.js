@@ -1,6 +1,6 @@
 /* jshint node: true */
 // spec/calculator-spec.js
-var TrelloCard = require("../lib/trello-card");
+var TrelloCard = require("../../lib/trello-card");
 
 describe("initializer", function () {
 
