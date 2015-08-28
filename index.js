@@ -11,7 +11,7 @@ function extract_card_id(text){
 
 exports.handler = function(event, context) {
 
-    var ghpr = JSON.parse(event);
+    var ghpr = event;
 
     if(!ghpr.pull_request){
         context.fail({"error":"event is not a 'pull_request'"});
