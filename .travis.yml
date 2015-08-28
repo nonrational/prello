@@ -6,10 +6,7 @@ before_script: grunt
 after_success: ./script/cidist
 addons:
   artifacts:
-    debug: true
-    acl: public_read
-    paths:
-      - "prello.zip"
+    paths: "prello.zip"
 
 # need to set these in the travis project config
 # export ARTIFACTS_KEY=
