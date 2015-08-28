@@ -1,0 +1,12 @@
+{
+  "action": "reopened",
+  "number": 2,
+  "pull_request": {
+    "html_url": "https://github.com/nonrational/prello/pull/2",
+    "number": 2,
+    "state": "open",
+    "locked": false,
+    "title": "dummy file",
+    "body": "... with another trello card link! \r\n\r\nhttps://trello.com/c/BZz3HMgk/3-card-c\r\n\r\n_edit: ninja edit_"
+  }
+}
