@@ -4,10 +4,12 @@ node_js:
   - "0.12"
 before_install: npm install -g grunt-cli
 before_script: grunt
-after_success: ./script/cidist
-addons:
-  artifacts:
-    paths: "prello.zip"
+
+# TODO: disabling until can use travis env to hold secrets
+# after_success: ./script/cidist
+# addons:
+#   artifacts:
+#     paths: "prello.zip"
 
 # need to set these in the travis project config
 # export ARTIFACTS_KEY=
