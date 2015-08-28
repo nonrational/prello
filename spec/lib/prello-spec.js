@@ -8,8 +8,6 @@ var fs = require('fs'),
 var pr_sans_trello = JSON.parse(fs.readFileSync('./spec/fixtures/pr_sans_trello.json', 'utf8').toString());
 var pr_with_trello = JSON.parse(fs.readFileSync('./spec/fixtures/pr_with_trello.json', 'utf8').toString());
 var non_pr_event   = JSON.parse(fs.readFileSync('./spec/fixtures/non_pr_event.json', 'utf8').toString());
-var pr_with_blank_trello = JSON.parse(fs.readFileSync('./spec/fixtures/pr_with_blank_trello.json', 'utf8').toString());
-
 
 var Context = function(done, status, message) {
 
